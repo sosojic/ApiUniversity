@@ -1,4 +1,6 @@
 namespace ApiUniversity.Models;
+//namespace = libraire interne
+//donc ce fichier là et les autres appartiennent à ApiUnviersity.Models
 
 public class Student
 {

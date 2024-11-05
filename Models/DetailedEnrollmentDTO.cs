@@ -12,5 +12,6 @@ public class DetailedEnrollmentDTO{
     {
         Id = enrollment.Id;
         Grade = enrollment.Grade;
+        
     } 
 }

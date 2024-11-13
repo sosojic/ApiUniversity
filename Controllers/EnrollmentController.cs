@@ -32,27 +32,31 @@ public class EnrollmentController : ControllerBase
         // Find course and related list
         // SingleAsync() throws an exception if no course is found (which is possible, depending on id)
         // SingleOrDefaultAsync() is a safer choice here
-        var enrollment = await _context.Enrollments
+        var enrollments = await _context.Enrollments
                                         .Include(s => s.Student)
-                                        .Include(c => c.Course)    
+                                        .Include(c => c.Course)
                                         .SingleOrDefaultAsync(t => t.Id == id);
 
-        if (enrollment == null)
+        if (enrollments == null)
         {
             return NotFound();
         }
 
-        return new DetailedEnrollmentDTO(enrollment);
+        return new DetailedEnrollmentDTO(enrollments);
     }
 
     // POST: api/course
     [HttpPost]
     public async Task<ActionResult<DetailedEnrollmentDTO>> PostEnrollment(EnrollmentDTO enrollmentDTO)
     {
-        Enrollment enrollment = new(detailedEnrollmentDTO);
+        Enrollment enrollment = new(enrollmentDTO);
 
         _context.Enrollments.Add(enrollment);
         await _context.SaveChangesAsync();
+
+        enrollment.Course = await _context.Courses.FirstAsync(c => c.Id == enrollment.CourseId);
+        enrollment.Student = await _context.Students.FirstAsync(c => c.Id == enrollment.StudentId);
+
 
         return CreatedAtAction(nameof(GetEnrollment), new { id = enrollment.Id }, new DetailedEnrollmentDTO(enrollment));
     }

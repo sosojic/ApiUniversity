@@ -9,6 +9,7 @@ public class Student
     public string FirstName { get; set; } = null!;
     public DateTime EnrollmentDate { get; set; }
     public List<Enrollment> Enrollments { get; set; } = new();
+    public string Email{ get; set; } = null!;
 
     // Default constructor
     public Student() { }
@@ -20,5 +21,6 @@ public class Student
         FirstName = studentDTO.FirstName;
         EnrollmentDate = studentDTO.EnrollmentDate;
         Enrollments = studentDTO.Enrollments;
+        Email=studentDTO.Email;
     }
 }

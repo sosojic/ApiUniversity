@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+
 namespace ApiUniversity.Models;
 
 public class StudentDTO
@@ -7,6 +9,7 @@ public class StudentDTO
     public string FirstName { get; set; } = null!;
     public DateTime EnrollmentDate { get; set; }
     public List<Enrollment> Enrollments { get; set; } = new();
+    public string Email{ get; set; } = null !;
 
     // Default constructor
     public StudentDTO() { }
@@ -18,5 +21,6 @@ public class StudentDTO
         FirstName = student.FirstName;
         EnrollmentDate = student.EnrollmentDate;
         Enrollments = student.Enrollments;
+        Email = student.Email;
     }
 }

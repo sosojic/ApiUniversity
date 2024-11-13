@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ApiUniversity.Models;
+using Microsoft.EntityFrameworkCore.Internal;
 
 
 public class UniversityContext : DbContext
@@ -7,6 +8,8 @@ public class UniversityContext : DbContext
     public DbSet<Student> Students { get; set; } = null!;
     public DbSet<Course> Courses { get; set; } = null!;
     public DbSet<Enrollment> Enrollments { get; set; } = null!;
+    public DbSet<Instructor> Instructors { get; set; } =null !;
+    public DbSet<Department> Departments { get; set; } = null!;
 
 
     public string DbPath { get; private set; }

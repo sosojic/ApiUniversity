@@ -20,7 +20,6 @@ public class StudentDTO
         LastName = student.LastName;
         FirstName = student.FirstName;
         EnrollmentDate = student.EnrollmentDate;
-        Enrollments = student.Enrollments;
         Email = student.Email;
     }
 }

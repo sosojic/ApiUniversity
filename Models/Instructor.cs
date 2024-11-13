@@ -12,5 +12,11 @@ public class Instructor
 
     public Instructor() { }
 
+    public Instructor(InstructorDTO instructorDTO){
+        Id=instructorDTO.Id;
+        LastName=instructorDTO.LastName;
+        FirstName=instructorDTO.FirstName;
+    }
+
     
 }
